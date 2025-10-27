@@ -2,6 +2,9 @@
 set -euo pipefail
 source "${GITHUB_ACTION_PATH}/scripts/functions.sh"
 
+
+echo "$BUILD_CONTEXT"
+
 WORKDIR="$GITHUB_WORKSPACE"
 CTX="${BUILD_CONTEXT:-.}"
 image="imagem-verificada"
