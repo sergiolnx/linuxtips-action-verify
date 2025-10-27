@@ -1,5 +1,11 @@
 name: Check Lint and Scan Docker/Terraform Vulnerabilities
 
+inputs:
+  docker-context:
+    default: '.'
+    required: false
+    description: "Path for Dockerfile"
+
 runs:
   using: composite
   steps:
@@ -34,6 +40,9 @@ runs:
 
     - name: Scan Docker
       shell: bash
+      env:
+        BUILD_CONTEXT: ${{ inputs.docker_context }}
+        GITHUB_TOKEN: ${{ github.token }}
       run: |
         bash ${{ github.action_path }}/scripts/scan-docker.sh
 
