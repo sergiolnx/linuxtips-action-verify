@@ -41,3 +41,13 @@ runs:
       shell: bash
       run: |
         bash ${{ github.action_path }}/scripts/scan-terraform.sh
+
+    - name: Fail if Problems were found
+      shell: bash
+      run: |
+        if [ -f "$GITHUB_WORKSPACE/issues_found.flag" ]; then
+          echo "Vulnerabilities encontradas - falahando job"
+          exit 1
+        else
+          echo "Nenhum Problema Pendente"
+        fi 
