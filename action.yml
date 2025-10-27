@@ -2,7 +2,7 @@ name: Check Lint and Scan Docker/Terraform Vulnerabilities
 
 inputs:
   docker-context:
-    default: 'app'
+    default: '.'
     required: false
     description: "Path for Dockerfile"
 
