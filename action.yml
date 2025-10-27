@@ -41,7 +41,7 @@ runs:
     - name: Scan Docker
       shell: bash
       env:
-        BUILD_CONTEXT: ${{ inputs.docker_context }}
+        BUILD_CONTEXT: ${{ github.events.inputs.docker_context }}
         GITHUB_TOKEN: ${{ github.token }}
       run: |
         bash ${{ github.action_path }}/scripts/scan-docker.sh
