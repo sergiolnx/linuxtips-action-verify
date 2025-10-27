@@ -37,11 +37,14 @@ runs:
         curl -sL "$TERRASCAN_URL" -o terrascan.tar.gz
         tar -xf terrascan.tar.gz terrascan && sudo install terrascan /usr/local/bin && rm terrascan terrascan.tar.gz
         terrascan
+    
+    - name: Checkout
+      uses: actions/checkout@v4
 
     - name: Scan Docker
       shell: bash
       env:
-        BUILD_CONTEXT: ${{ github.events.inputs.docker_context }}
+        BUILD_CONTEXT: ${{ github.events.inputs.docker-context }}
         GITHUB_TOKEN: ${{ github.token }}
       run: |
         bash ${{ github.action_path }}/scripts/scan-docker.sh
