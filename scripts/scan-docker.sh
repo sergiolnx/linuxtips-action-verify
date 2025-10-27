@@ -10,7 +10,10 @@ CTX="${BUILD_CONTEXT:-.}"
 image="imagem-verificada"
 
 DOCKERFILE_PATH="$WORKDIR/$CTX/Dockerfile"
+
+
 echo $DOCKERFILE_PATH
+ls -la
 
 if [[ -f "$DOCKERFILE_PATH" ]]; then
   docker build -t "$image" "$CTX"

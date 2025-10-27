@@ -1,13 +1,13 @@
 name: Check Lint and Scan Docker/Terraform Vulnerabilities
 
-inputs:
+runs:
+  using: composite
+  inputs:
   docker-context:
     default: '.'
     required: false
     description: "Path for Dockerfile"
 
-runs:
-  using: composite
   steps:
 
     - name: Install Dependencias
@@ -44,7 +44,7 @@ runs:
     - name: Scan Docker
       shell: bash
       env:
-        BUILD_CONTEXT: ${{ github.events.inputs.docker-context }}
+        BUILD_CONTEXT: ${{ github.events.inputs. }}
         GITHUB_TOKEN: ${{ github.token }}
       run: |
         bash ${{ github.action_path }}/scripts/scan-docker.sh
