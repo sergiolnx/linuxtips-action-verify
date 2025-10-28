@@ -2,9 +2,6 @@
 set -euo pipefail
 source "${GITHUB_ACTION_PATH}/scripts/functions.sh"
 
-
-echo "$BUILD_CONTEXT"
-
 WORKDIR="$GITHUB_WORKSPACE"
 CTX="${BUILD_CONTEXT:-.}"
 image="imagem-verificada"
@@ -13,7 +10,6 @@ DOCKERFILE_PATH="$WORKDIR/$CTX/Dockerfile"
 
 
 echo $DOCKERFILE_PATH
-ls -la
 
 if [[ -f "$DOCKERFILE_PATH" ]]; then
   docker build -t "$image" "$CTX"
