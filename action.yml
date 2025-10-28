@@ -53,6 +53,8 @@ runs:
 
     - name: Scan Terraform
       shell: bash
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
       run: |
         bash ${{ github.action_path }}/scripts/scan-terraform.sh
 
